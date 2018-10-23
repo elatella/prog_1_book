@@ -1,0 +1,118 @@
+import java.util.Date;
+import java.util.Scanner;
+import java.text.*;
+import java.util.Calendar;
+
+public class Book
+{	
+	private int id;
+	private String title;
+	private String author;
+	private Date dateOfPublication;
+
+	public static final String DATE_FORMAT = "dd.MM.yyyy";
+	
+	
+	public int age()
+	{
+		Calendar cal = Calendar.getInstance();
+		Date today = cal.getTime();
+	
+		
+		//publishing date
+		Date bookdate = cal.getTime();
+		
+		long dateSubstract = today.getTime() - bookdate.getTime();	
+		long time = 1000 * 60 * 60 * 24;
+		
+		long ageDays = dateSubstract/time;
+		System.out.println(ageDays);
+		
+		
+		//make long to int	
+		int ageDaysInt = (int) ageDays;
+			
+		return ageDaysInt;
+		
+		
+	}
+	
+	///////////////////////////////////////////////////////////////////////
+	
+		public void setId(int id)
+        {this.id = id;}
+        public int getId()
+        {return id;}
+
+        public void setTitle(String title)
+        {this.title = title;}
+        public String getTitle()
+        {return title;}
+
+        public void setAuthor(String author)
+        {this.author = author;}
+		public String getAuthor()
+        {return author;}
+
+        public void setDateOfPublication(Date dateOfPublication)
+        {this.dateOfPublication = dateOfPublication;}
+		public Date getDateOfPublication()
+        {return dateOfPublication;}
+	
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////
+	public String toString()
+	{
+		//convert id to string and put everything together
+		
+		
+		String newDate = dateToString(DateOfPublication);
+		
+		
+	}
+	
+	
+	
+	public void input() 
+	{
+		Scanner scn = new Scanner( System.in );
+		System.out.print( "Please enter id: " );
+		//int
+	
+		System.out.println("Please enter title: ");
+		//string
+		
+		System.out.println("Please enter author: ");
+		//string
+		
+		System.out.println("Please enter date of publication: ");
+		//date
+	}
+	
+	public static String dateToString( Date d ) //done
+	{
+		SimpleDateFormat fmt = new SimpleDateFormat( DATE_FORMAT );
+		return fmt.format( d );
+	}
+	
+	
+	
+	public static Date stringToDate( String s ) //done
+	{
+		Date r = null;
+		try {
+			SimpleDateFormat fmt = new SimpleDateFormat( DATE_FORMAT );
+			r = fmt.parse( s );
+		} catch ( ParseException e ){
+			System.err.println( e );
+			System.exit(1);
+		}
+		return r;
+	}
+	
+	
+	
+	
+}
