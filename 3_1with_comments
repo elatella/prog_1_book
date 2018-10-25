@@ -13,18 +13,20 @@ public class Book
         private String title;
         private String author;
         private Date dateOfPublication;
+        private int price;
 
         public static final String DATE_FORMAT = "dd.MM.yyyy";
         //--- constructors ---
 
         // TODO: Insert your code here!
 
-        public Book(int id, String title, String author, Date dateOfPublication)
+        public Book(int id, String title, String author, Date dateOfPublication, int price)
         {       
                 this.id = id;
                 this.title = title;
                 this.author = author;
                 this.dateOfPublication = dateOfPublication;
+                this.price = price;
         }
 
         /** Returns the age of the book in days since publication */
@@ -51,7 +53,7 @@ public class Book
                 
                 String newDate = dateToString (this.dateOfPublication);
                 
-                return "Book ["+ this.id + this.title + this.author +newDate +"]";      
+                return "Book ["+ this.id + this.title + this.author +newDate +this.price +"]";      
         }
 
         /** Reads all book data from user input */
@@ -71,6 +73,10 @@ public class Book
                 String stringDateOfPublication;
                 stringDateOfPublication = scn.nextLine();
                 this.dateOfPublication = stringToDate (stringDateOfPublication);
+
+                System.out.print( "Please enter price: " );
+                this.price = scn.nextInt();
+                
                 
                 // TODO: Insert your code here!
         
@@ -99,4 +105,33 @@ public class Book
         {this.dateOfPublication = dateOfPublication;}
         public Date getDateOfPublication()
         {return dateOfPublication;}
+        
+        public void setPrice(int price)
+        {this.price = price;                
+        if (this.price <= 0)
+        this.price = 0;}
+        public int getPrice()
+        {return price;}
 
+        //--- helper methods -- DO NOT CHANGE ------------------------------------
+        /** Converts the Date object d into a String object */
+        public static String dateToString( Date d )
+        {
+                SimpleDateFormat fmt = new SimpleDateFormat( DATE_FORMAT );
+                return fmt.format( d );
+        }
+
+        /** Converts the String object s into a Date object */
+        public static Date stringToDate( String s )
+        {
+                Date r = null;
+                try {
+                        SimpleDateFormat fmt = new SimpleDateFormat( DATE_FORMAT );
+                        r = fmt.parse( s );
+                } catch ( ParseException e ){
+                        System.err.println( e );
+                        System.exit(1);
+                }
+                return r;
+        }
+}
