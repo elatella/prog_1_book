@@ -1,0 +1,31 @@
+/* ************************************************************************* *\
+*                Programmierung 1 HS 2018 - Serie 3-2                         *
+*               Anastasija Novikova 16-825-390                                *
+*               Raphaela Seeger 16-113-441                                    *
+\* ************************************************************************* */
+
+import java.util.Date;
+import java.util.Scanner;
+import java.text.*;
+import java.util.Calendar;
+
+public class Order
+{
+        private int id;
+        private String customerName;
+        private String customerAddress;
+
+
+
+
+//5 book objects (5 unterschiedliche book instanz variablen)
+
+//Methods:
+// toString()
+// addBook() () (use while Statement to ask for more books to add)
+// getTotalPrice()
+
+
+
+}
+//Should be able to call up Test.java and give out output
