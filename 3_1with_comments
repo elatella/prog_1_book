@@ -1,0 +1,102 @@
+/* ************************************************************************* *\
+*                Programmierung 1 HS 2018 - Serie 3-1                         *
+\* ************************************************************************* */
+
+import java.util.Date;
+import java.util.Scanner;
+import java.text.*;
+import java.util.Calendar;
+
+public class Book
+{
+        private int id;
+        private String title;
+        private String author;
+        private Date dateOfPublication;
+
+        public static final String DATE_FORMAT = "dd.MM.yyyy";
+        //--- constructors ---
+
+        // TODO: Insert your code here!
+
+        public Book(int id, String title, String author, Date dateOfPublication)
+        {       
+                this.id = id;
+                this.title = title;
+                this.author = author;
+                this.dateOfPublication = dateOfPublication;
+        }
+
+        /** Returns the age of the book in days since publication */
+        public int age()
+        {       
+                // TODO: Insert your code here!
+                //we could use Date with new Date() to get time right now
+                
+                Calendar cal = Calendar.getInstance();
+                Date today = cal.getTime();
+                Date publication = cal.getTime(this.dateOfPublication);
+                long days = (today.getTime() - dateOfPublication.getTime())/86400000;           
+                int ageDays;
+                days = (int) ageDays;
+        
+                return ageDays;
+        }
+
+        /** Returns a String representation of the book */
+        public String toString()
+        {       
+                // TODO: Insert your code here!
+                // TODO: Insert your code here!
+                
+                String newDate = dateToString (this.dateOfPublication);
+                
+                return "Book ["+ this.id + this.title + this.author +newDate +"]";      
+        }
+
+        /** Reads all book data from user input */
+        public void input()
+        {       
+                Scanner scn = new Scanner( System.in );
+                System.out.print( "Please enter id: " );
+                this.id = scn.nextInt();
+                
+                System.out.println("Please enter title: ");
+                this.title = scn.nextLine();
+                
+                System.out.println("Please enter author: ");
+                this.author = scn.nextLine();
+                
+                System.out.println("Please enter date of Publication (dd.mm.yyyy): ");          
+                String stringDateOfPublication;
+                stringDateOfPublication = scn.nextLine();
+                this.dateOfPublication = stringToDate (stringDateOfPublication);
+                
+                // TODO: Insert your code here!
+        
+        }
+
+        //--- Get-/Set-methods ---
+
+        // TODO: Insert your code here!
+
+        public void setId(int id)
+        {this.id = id;}
+        public int getId()
+        {return id;}
+
+        public void setTitle(String title)
+        {this.title = title;}
+        public String getTitle()
+        {return title;}
+
+        public void setAuthor(String author)
+        {this.author = author;}
+        public String getAuthor()
+        {return author;}
+
+        public void setDateOfPublication(Date dateOfPublication)
+        {this.dateOfPublication = dateOfPublication;}
+        public Date getDateOfPublication()
+        {return dateOfPublication;}
+
