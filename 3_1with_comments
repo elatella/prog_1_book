@@ -1,26 +1,24 @@
 /* ************************************************************************* *\
 *                Programmierung 1 HS 2018 - Serie 3-1                         *
 \* ************************************************************************* */
-
-import java.util.Date;
+ import java.util.Date;
 import java.util.Scanner;
 import java.text.*;
 import java.util.Calendar;
+import static java.lang.Math.toIntExact;
 
-public class Book
+
+ public class Book
 {
         private int id;
         private String title;
         private String author;
         private Date dateOfPublication;
         private int price;
-
-        public static final String DATE_FORMAT = "dd.MM.yyyy";
+         public static final String DATE_FORMAT = "dd.MM.yyyy";
         //--- constructors ---
-
-        // TODO: Insert your code here!
-
-        public Book(int id, String title, String author, Date dateOfPublication, int price)
+         // TODO: Insert your code here!
+         public Book(int id, String title, String author, Date dateOfPublication, int price)
         {       
                 this.id = id;
                 this.title = title;
@@ -28,8 +26,7 @@ public class Book
                 this.dateOfPublication = dateOfPublication;
                 this.price = price;
         }
-
-        /** Returns the age of the book in days since publication */
+         /** Returns the age of the book in days since publication */
         public int age()
         {       
                 // TODO: Insert your code here!
@@ -37,15 +34,13 @@ public class Book
                 
                 Calendar cal = Calendar.getInstance();
                 Date today = cal.getTime();
-                Date publication = cal.getTime(this.dateOfPublication);
-                long days = (today.getTime() - dateOfPublication.getTime())/86400000;           
-                int ageDays;
-                days = (int) ageDays;
-        
+                Date publication = this.dateOfPublication;
+                long days = (today.getTime() - dateOfPublication.getTime())/86400000;                 
+                int ageDays = toIntExact(days);
+                        
                 return ageDays;
         }
-
-        /** Returns a String representation of the book */
+         /** Returns a String representation of the book */
         public String toString()
         {       
                 // TODO: Insert your code here!
@@ -55,8 +50,7 @@ public class Book
                 
                 return "Book ["+ this.id + this.title + this.author +newDate +this.price +"]";      
         }
-
-        /** Reads all book data from user input */
+         /** Reads all book data from user input */
         public void input()
         {       
                 Scanner scn = new Scanner( System.in );
@@ -69,39 +63,32 @@ public class Book
                 System.out.println("Please enter author: ");
                 this.author = scn.nextLine();
                 
-                System.out.println("Please enter date of Publication (dd.mm.yyyy): ");          
+                System.out.println("Please enter date of Publication (dd.mm.yyyy): ");                
                 String stringDateOfPublication;
                 stringDateOfPublication = scn.nextLine();
                 this.dateOfPublication = stringToDate (stringDateOfPublication);
-
-                System.out.print( "Please enter price: " );
+                 System.out.print( "Please enter price: " );
                 this.price = scn.nextInt();
                 
                 
                 // TODO: Insert your code here!
         
         }
-
-        //--- Get-/Set-methods ---
-
-        // TODO: Insert your code here!
-
-        public void setId(int id)
+         //--- Get-/Set-methods ---
+         // TODO: Insert your code here!
+         public void setId(int id)
         {this.id = id;}
         public int getId()
         {return id;}
-
-        public void setTitle(String title)
+         public void setTitle(String title)
         {this.title = title;}
         public String getTitle()
         {return title;}
-
-        public void setAuthor(String author)
+         public void setAuthor(String author)
         {this.author = author;}
         public String getAuthor()
         {return author;}
-
-        public void setDateOfPublication(Date dateOfPublication)
+         public void setDateOfPublication(Date dateOfPublication)
         {this.dateOfPublication = dateOfPublication;}
         public Date getDateOfPublication()
         {return dateOfPublication;}
@@ -112,16 +99,17 @@ public class Book
         this.price = 0;}
         public int getPrice()
         {return price;}
-
-        //--- helper methods -- DO NOT CHANGE ------------------------------------
+        
+        
+        
+         //--- helper methods -- DO NOT CHANGE ------------------------------------
         /** Converts the Date object d into a String object */
         public static String dateToString( Date d )
         {
                 SimpleDateFormat fmt = new SimpleDateFormat( DATE_FORMAT );
                 return fmt.format( d );
         }
-
-        /** Converts the String object s into a Date object */
+         /** Converts the String object s into a Date object */
         public static Date stringToDate( String s )
         {
                 Date r = null;
